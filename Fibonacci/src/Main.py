@@ -1,6 +1,6 @@
 import numpy as np
 """
-Approaches: Recursion/Iterative, Dynamic,
+Algorithm: Fibonacci. Approaches: Recursion, Tail, Recursion, Iterative, Dynamic.
 """
 
 
@@ -51,7 +51,7 @@ def fibonacci_tail_recursion_aux(n, i, prev, next, result):
     else:
         return fibonacci_tail_recursion_aux(n, i+1, next, prev+next, prev+next)
 
-print fibonacci_tail_recursion(5)
+# print fibonacci_tail_recursion(5)
 
 store_dict = dict()
 store_dict[0] = 0
@@ -73,4 +73,9 @@ def fibonacci_dynamic(n):
     store_dict[n] = store_dict[n-1] + store_dict[n-2]
     return store_dict[n]
 
-#  print fibonacci_dynamic(5)
+print fibonacci_dynamic(5)
+
+np.save('../output/fibonacci_999_numbers.npy', store_dict)
+store_dict = np.load('../output/fibonacci_999_numbers.npy').item()
+store_dict = dict(store_dict)
+print store_dict.keys(), store_dict.values()
